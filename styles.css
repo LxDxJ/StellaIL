@@ -109,3 +109,15 @@ footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; g
 .mc small { color: var(--muted); display: block; }
 .pager { display: flex; gap: 14px; align-items: center; justify-content: center; margin-top: 18px; color: var(--muted); }
 .pager .btn[disabled] { opacity: .4; cursor: default; }
+
+/* legal pages */
+.prose h2 { font-size: 1.25rem; margin: 30px 0 10px; }
+.prose ul, .prose ol { color: var(--muted); max-width: 720px; margin: 0 0 14px 22px; }
+.prose li { margin-bottom: 8px; }
+.prose li strong { color: var(--text); }
+.prose a { color: var(--accent); }
+.prose table { border-collapse: collapse; max-width: 720px; width: 100%; margin: 0 0 14px; color: var(--muted); font-size: .95rem; }
+.prose th, .prose td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.prose th { color: var(--text); }
+.updated { color: var(--muted); font-size: .9rem; margin-top: 6px; }
+footer a { color: inherit; text-decoration: underline; }
