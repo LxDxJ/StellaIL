@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My Stella</title>
+<meta name="description" content="Log in with Discord to see your Stella collection.">
+<meta name="theme-color" content="#0f0f14">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header><div class="wrap nav">
+  <a class="brand" href="index.html">✦ <span>Stella</span></a>
+  <nav><ul><li><a class="link" href="index.html">Home</a></li><li><a class="link" href="about.html">About</a></li><li><a class="link" href="stats.html">Stats</a></li><li><a class="link active" href="account.html">My Stella</a></li><li><a class="link" href="support.html">Support Stella</a></li><li><a class="link" href="contact.html">Contact</a></li></ul></nav>
+</div></header>
+
+<div class="wrap">
+  <div class="page-title"><h1>My Stella</h1></div>
+  <section>
+    <div id="msg" class="note hidden"></div>
+    <div id="loginBox" class="card hidden">
+      <h3>Log in with Discord</h3>
+      <p style="margin:6px 0 16px">See your collection and stats on the website. We only get your Discord name and avatar, never your password or email.</p>
+      <a id="loginBtn" class="btn primary" href="#">Log in with Discord</a>
+    </div>
+    <div id="account" class="hidden">
+      <div class="profile">
+        <img id="avatar" alt="" width="64" height="64">
+        <div><h2 id="who" style="margin:0"></h2><a id="logout" href="#">Log out</a></div>
+      </div>
+      <div class="tiles" id="mine"></div>
+      <h2 style="margin-top:28px">My cards</h2>
+      <form id="search" class="custom" autocomplete="off">
+        <input id="q" maxlength="60" placeholder="Search by name, series or code">
+        <button class="btn" type="submit">Search</button>
+      </form>
+      <div class="cardgrid" id="cards"></div>
+      <div class="pager"><button class="btn" id="prev">Previous</button><span id="pageInfo"></span><button class="btn" id="next">Next</button></div>
+    </div>
+  </section>
+</div>
+
+<footer><div class="wrap">
+  <span>© <script>document.write(new Date().getFullYear())</script> Stella</span>
+  <span>Stella is not affiliated with Discord. Prices in USD.</span>
+</div></footer>
+<script src="config.js"></script>
+<script src="main.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
