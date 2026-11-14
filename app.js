@@ -22,16 +22,15 @@
   }
   function tile(value, label) { return h("div", { "class": "tile" }, [h("b", {}, [num(value)]), h("span", {}, [label])]); }
 
-  // ---------- stats page ----------
+  // ---------- stats page (logged-in players only, for now) ----------
   if ($("tiles")) {
-    if (!API) { show($("offline"), true); } else {
-      api("/api/stats").then(function (s) {
-        var t = $("tiles");
-        t.appendChild(tile(s.servers, "Servers"));
-        t.appendChild(tile(s.players, "Players"));
-        t.appendChild(tile(s.cards, "Cards collected"));
-        t.appendChild(tile(s.characters, "Characters"));
-      }).catch(function () { show($("offline"), true); });
+    var startStats = function (s) {
+      show($("statsData"), true);
+      var t = $("tiles");
+      t.appendChild(tile(s.servers, "Servers"));
+      t.appendChild(tile(s.players, "Players"));
+      t.appendChild(tile(s.cards, "Cards collected"));
+      t.appendChild(tile(s.characters, "Characters"));
 
       var loadBoard = function (by) {
         api("/api/leaderboard?by=" + by).then(function (d) {
@@ -60,6 +59,12 @@
         }).catch(function (e) {
           box.appendChild(h("p", {}, [e.status === 404 ? "No card with that code." : "Couldn't look that up right now."]));
         });
+      });
+    };
+    if (!API) { show($("offline"), true); } else {
+      $("loginBtn").href = API + "/auth/login";
+      api("/api/stats").then(startStats).catch(function (e) {
+        if (e.status === 401) show($("loginBox"), true); else show($("offline"), true);
       });
     }
   }
