@@ -6,6 +6,14 @@
     var v = C[el.getAttribute("data-link")];
     el.href = v || "#";
   });
+  // Links between the public site and the logged-in pages on the bot host
+  document.querySelectorAll("[data-app]").forEach(function (a) {
+    if (C.appBase) a.href = C.appBase.replace(/\/$/, "") + "/" + a.getAttribute("data-app");
+  });
+  document.querySelectorAll("[data-site]").forEach(function (a) {
+    if (C.publicSite) a.href = C.publicSite.replace(/\/$/, "") + "/" + a.getAttribute("data-site");
+  });
+
   var mail = document.querySelector("[data-email]");
   if (mail) {
     if (C.contactEmail) { mail.href = "mailto:" + C.contactEmail; mail.textContent = C.contactEmail; }
