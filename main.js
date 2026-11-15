@@ -64,6 +64,7 @@
 
   // Home page widgets: live numbers from the bot's public API. Everything stays hidden if it can't be reached.
   (function () {
+    var C = window.STELLA || {};
     var live = document.getElementById("liveStats");
     var base = (C.appBase || "").replace(/\/$/, "");
     if (!live || !base) return;
