@@ -124,3 +124,16 @@ footer a { color: inherit; text-decoration: underline; }
 code { background: var(--panel-2); border: 1px solid var(--line); border-radius: 6px; padding: 1px 6px; font-size: .88em; }
 .cmd { margin: 4px 0 0; }
 .btn.soon { opacity: .55; cursor: not-allowed; pointer-events: none; }
+
+.nav li.dd { position: relative; display: flex; align-items: center; }
+.nav .caret { background: none; border: 0; color: var(--muted); cursor: pointer; font-size: .85rem; padding: 8px 8px 8px 0; margin-left: -8px; }
+.nav .caret:hover { color: var(--text); }
+.nav ul.menu { display: none; position: absolute; top: 100%; left: 0; min-width: 190px; flex-direction: column; gap: 2px; padding: 8px; margin-top: 4px;
+  background: var(--panel); border: 1px solid var(--line); border-radius: 12px; z-index: 30; box-shadow: 0 10px 30px rgba(0,0,0,.45); }
+.nav ul.menu::before { content: ""; position: absolute; left: 0; right: 0; top: -14px; height: 14px; }
+.nav li.dd:hover > ul.menu, .nav li.dd:focus-within > ul.menu, .nav li.dd.open > ul.menu { display: flex; }
+.nav ul.menu a { display: block; color: var(--muted); padding: 8px 12px; border-radius: 8px; font-size: .92rem; white-space: nowrap; }
+.nav ul.menu a:hover { color: var(--text); background: var(--panel-2); text-decoration: none; }
+.nav ul.menu a.on { color: var(--text); background: var(--panel-2); }
+@media (max-width: 720px) { .nav ul.menu { position: static; margin-top: 6px; box-shadow: none; } .nav li.dd { flex-wrap: wrap; justify-content: center; }
+  .nav li.dd:hover > ul.menu, .nav li.dd:focus-within > ul.menu { display: none; } .nav li.dd.open > ul.menu { display: flex; } }

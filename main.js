@@ -48,3 +48,17 @@
     }
   }
 })();
+
+(function () {                                  // My Stella dropdown: hover on desktop, the little arrow on touch screens
+  var all = function () { return document.querySelectorAll(".nav li.dd"); };
+  all().forEach(function (dd) {
+    var b = dd.querySelector(".caret");
+    b.addEventListener("click", function (e) {
+      e.stopPropagation();
+      var open = dd.classList.toggle("open"); b.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+  });
+  var closeAll = function () { all().forEach(function (d) { d.classList.remove("open"); var b = d.querySelector(".caret"); if (b) b.setAttribute("aria-expanded", "false"); }); };
+  document.addEventListener("click", closeAll);
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeAll(); });
+})();
