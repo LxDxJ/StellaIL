@@ -11,7 +11,7 @@
 <body>
 <header><div class="wrap nav">
   <a class="brand" href="index.html">✦ <span>Stella</span></a>
-  <nav><ul><li><a class="link" href="index.html">Home</a></li><li><a class="link" href="about.html">About</a></li><li><a class="link" href="stats.html" data-app="stats.html">Stats</a></li><li><a class="link" href="clans.html" data-app="clans.html">Clans</a></li><li class="dd"><a class="link" href="account.html" data-app="account.html">My Stella</a><button class="caret" type="button" aria-label="My Stella menu" aria-expanded="false">▾</button><ul class="menu"><li><a href="account.html" data-app="account.html">📊 My stats</a></li><li><a href="cards.html" data-app="cards.html">🃏 My cards</a></li><li><a href="albums.html" data-app="albums.html">📚 Albums</a></li><li><a href="home.html" data-app="home.html">🏠 My home</a></li></ul></li><li><a class="link" href="support.html">Support Stella</a></li><li><a class="link" href="contact.html">Contact</a></li></ul></nav>
+  <nav><ul><li><a class="link" href="index.html">Home</a></li><li><a class="link" href="about.html">About</a></li><li class="dd"><a class="link" href="characters.html" data-app="characters.html">Explore</a><button class="caret" type="button" aria-label="Explore menu" aria-expanded="false">▾</button><ul class="menu"><li><a href="characters.html" data-app="characters.html">🔎 Characters</a></li><li><a href="events.html" data-app="events.html">🎉 Events</a></li><li><a href="clans.html" data-app="clans.html">🛡️ Clans</a></li><li><a href="stats.html" data-app="stats.html">📊 Stats &amp; leaderboards</a></li></ul></li><li class="dd"><a class="link" href="account.html" data-app="account.html">My Stella</a><button class="caret" type="button" aria-label="My Stella menu" aria-expanded="false">▾</button><ul class="menu"><li><a href="account.html" data-app="account.html">📊 My stats</a></li><li><a href="cards.html" data-app="cards.html">🃏 My cards</a></li><li><a href="albums.html" data-app="albums.html">📚 Albums</a></li><li><a href="home.html" data-app="home.html">🏠 My home</a></li><li><a href="achievements.html" data-app="achievements.html">🏆 Achievements</a></li><li><a href="clan.html" data-app="clan.html">🛡️ My clan</a></li></ul></li><li><a class="link" href="support.html">Support Stella</a></li><li><a class="link" href="contact.html">Contact</a></li></ul></nav>
 </div></header>
 
 <div class="wrap">
@@ -45,8 +45,9 @@
 <ul>
 <li><strong>What we receive.</strong> Discord's login (OAuth2) gives us only your Discord user ID, username and avatar. We never receive your password, email address or server list, and we can't act on your Discord account. Discord's access token is discarded right after login.</li>
 <li><strong>Cookies.</strong> We set one signed session cookie on your device to keep you logged in. It lasts up to 7 days or until you log out. We don't use advertising or tracking cookies.</li>
-<li><strong>What you can change on the site.</strong> While logged in you can change your own cards, such as decorating a card, tagging it with an emoji, or decorating your home. This updates the same data the bot already stores (the card's style, your home's layout, your balances and the card's history) and nothing new is collected. We keep a short server log of these actions (your Discord ID, the card code and what changed) to fix problems and investigate abuse.</li>
+<li><strong>What you can change on the site.</strong> While logged in you can change your own cards, such as decorating a card, tagging it with an emoji, or decorating your home, and, if you lead or help run a clan, managing it. This updates the same data the bot already stores (the card's style, your home's layout, your clan's settings and member roles, your balances and the card's history) and nothing new is collected. We keep a short server log of these actions (your Discord ID, the card code and what changed) to fix problems and investigate abuse.</li>
 <li><strong>What the site shows.</strong> Once you're logged in, the site shows data the bot already stores: your own collection, balances and profile, plus server-wide stats, card lookups and leaderboards. Leaderboards show other players' Discord names and ranks, the same as in the bot.</li>
+<li><strong>Public pages.</strong> The Clans, Characters and Events pages can be viewed without logging in. They show clan names, tags, emoji, descriptions and totals (points, member counts, war results), and character and event cards. They never show player names, balances or what anyone owns. Clan names and descriptions are written by players, so they are public.</li>
 <li><strong>Technical data.</strong> The public pages are hosted on GitHub Pages, and the logged-in pages are served by the hosting service that runs the bot. These services process visitors' IP addresses and requests to deliver the site, under their own privacy policies. We may briefly use your IP address in memory to limit abuse and don't store it in our database.</li>
 </ul>
 <p><strong>Services we use.</strong></p>
@@ -70,7 +71,7 @@
 </div>
 
 <footer><div class="wrap">
-  <span>© <script>document.write(new Date().getFullYear())</script> Stella · <a href="terms.html">Terms</a> · <a href="privacy.html">Privacy</a></span>
+  <span>© <script>document.write(new Date().getFullYear())</script> Stella · <a href="terms.html">Terms</a> · <a href="privacy.html">Privacy</a> · <a href="changelog.html">Changelog</a></span>
   <span>Stella is not affiliated with Discord. Prices in USD.</span>
 </div></footer>
 <script src="config.js"></script>

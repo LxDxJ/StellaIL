@@ -137,3 +137,7 @@ code { background: var(--panel-2); border: 1px solid var(--line); border-radius:
 .nav ul.menu a.on { color: var(--text); background: var(--panel-2); }
 @media (max-width: 720px) { .nav ul.menu { position: static; margin-top: 6px; box-shadow: none; } .nav li.dd { flex-wrap: wrap; justify-content: center; }
   .nav li.dd:hover > ul.menu, .nav li.dd:focus-within > ul.menu { display: none; } .nav li.dd.open > ul.menu { display: flex; } }
+
+.prose ul { color: var(--muted); max-width: 720px; margin: 0 0 14px 22px; }
+.prose li { margin-bottom: 8px; }
+.prose li b, .prose li code { color: var(--text); }
