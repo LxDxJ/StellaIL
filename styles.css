@@ -168,3 +168,20 @@ section > h2 { margin-bottom: 14px; }
 .votebox { display: flex; flex-wrap: wrap; gap: 18px; align-items: center; justify-content: space-between; }
 .votebox p { max-width: 640px; }
 .votebox b { color: var(--text); }
+
+/* small screens */
+.card { overflow-x: auto; }
+@media (max-width: 720px) {
+  .nav ul { flex-wrap: wrap; justify-content: center; }
+  .nav a.link { padding: 7px 10px; font-size: .9rem; }
+  .wrap { padding-left: 16px; padding-right: 16px; }
+  .votebox { flex-direction: column; align-items: flex-start; }
+  .tiles { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); }
+}
+@media (max-width: 560px) {
+  .ach { grid-template-columns: 36px 1fr; }
+  .ach .rw { grid-column: 2; text-align: left; }
+  .board td { padding: 8px 3px; font-size: .88rem; }
+  .board .rolebtns { display: block; margin-top: 6px; }
+  .board .rolebtns button { margin: 0 6px 0 0; }
+}
