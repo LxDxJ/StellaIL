@@ -123,3 +123,4 @@ footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; g
 footer a { color: inherit; text-decoration: underline; }
 code { background: var(--panel-2); border: 1px solid var(--line); border-radius: 6px; padding: 1px 6px; font-size: .88em; }
 .cmd { margin: 4px 0 0; }
+.btn.soon { opacity: .55; cursor: not-allowed; pointer-events: none; }

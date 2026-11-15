@@ -37,6 +37,10 @@
       var v = C.pay && C.pay[path[0]] && C.pay[path[0]][path[1]];
       a.href = v || "#";
       if (v && v !== "#") { a.target = "_blank"; a.rel = "noopener"; }
+      else {                                   // no payment link yet: show a disabled "Coming soon" button
+        a.textContent = "Coming soon"; a.classList.add("soon"); a.setAttribute("aria-disabled", "true");
+        a.addEventListener("click", function (e) { e.preventDefault(); });
+      }
     });
     if (location.hash === "#monthly" || location.hash === "#onetime") {
       var t = document.querySelector('.toggle button[data-mode="' + location.hash.slice(1) + '"]');
