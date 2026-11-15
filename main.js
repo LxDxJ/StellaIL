@@ -61,4 +61,51 @@
   var closeAll = function () { all().forEach(function (d) { d.classList.remove("open"); var b = d.querySelector(".caret"); if (b) b.setAttribute("aria-expanded", "false"); }); };
   document.addEventListener("click", closeAll);
   document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeAll(); });
+
+  // Home page widgets: live numbers from the bot's public API. Everything stays hidden if it can't be reached.
+  (function () {
+    var live = document.getElementById("liveStats");
+    var base = (C.appBase || "").replace(/\/$/, "");
+    if (!live || !base) return;
+    var $ = function (id) { return document.getElementById(id); };
+    var mk = function (tag, text, cls) { var e = document.createElement(tag); if (cls) e.className = cls; e.textContent = text; return e; };
+    var num = function (n) { return Number(n || 0).toLocaleString(); };
+    fetch(base + "/api/overview").then(function (r) { if (!r.ok) throw 0; return r.json(); }).then(function (d) {
+      var t = $("liveTiles");
+      [["servers", "Servers"], ["players", "Players"], ["cards", "Cards collected"], ["characters", "Characters"], ["series", "Series"], ["clans", "Clans"]].forEach(function (p) {
+        var tile = document.createElement("div"); tile.className = "tile";
+        tile.appendChild(mk("b", num(d[p[0]]))); tile.appendChild(mk("span", p[1])); t.appendChild(tile);
+      });
+      live.classList.remove("hidden");
+      var mo = $("mosaic");
+      (d.featured || []).slice(0, 9).forEach(function (c) {
+        var img = document.createElement("img");
+        img.alt = ""; img.loading = "lazy"; img.src = base + "/api/pub/art/" + c.id + "/" + c.edition;
+        img.addEventListener("error", function () { img.remove(); });
+        mo.appendChild(img);
+      });
+      if (mo.children.length) mo.classList.remove("hidden");
+      var any = false;
+      if (d.event) {
+        any = true;
+        var eb = $("eventBody");
+        eb.appendChild(mk("p", (d.event.emoji || "") + " " + d.event.name));
+        var bits = [];
+        if (d.event.ends_at) bits.push("Ends " + new Date(d.event.ends_at * 1000).toLocaleDateString());
+        if (d.event.boost) bits.push(d.event.boost + "% boost");
+        if (bits.length) eb.appendChild(mk("p", bits.join(" · "), "evline"));
+        var a = mk("a", "See the event cards →"); a.href = base + "/events.html"; a.style.display = "inline-block"; a.style.marginTop = "10px"; eb.appendChild(a);
+      } else { $("eventBox").classList.add("hidden"); }
+      if (d.top_clans && d.top_clans.length) {
+        any = true;
+        d.top_clans.forEach(function (c) {
+          var tr = document.createElement("tr"), name = document.createElement("td"), a2 = mk("a", (c.emoji ? c.emoji + " " : "") + c.name + (c.tag ? " [" + c.tag + "]" : ""));
+          a2.href = base + "/clans.html?id=" + c.id; name.appendChild(a2);
+          tr.appendChild(mk("td", "#" + c.rank)); tr.appendChild(name); tr.appendChild(mk("td", num(c.score) + " pts"));
+          $("clanRows").appendChild(tr);
+        });
+      } else { $("clanBox").classList.add("hidden"); }
+      if (any) $("widgets").classList.remove("hidden");
+    }).catch(function () {});
+  })();
 })();
