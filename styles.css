@@ -164,3 +164,7 @@ code { background: var(--panel-2); border: 1px solid var(--line); border-radius:
 .board td:last-child { text-align: right; color: var(--muted); }
 .evline { color: var(--muted); font-size: .92rem; margin-top: 4px; }
 section > h2 { margin-bottom: 14px; }
+
+.votebox { display: flex; flex-wrap: wrap; gap: 18px; align-items: center; justify-content: space-between; }
+.votebox p { max-width: 640px; }
+.votebox b { color: var(--text); }
