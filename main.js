@@ -34,6 +34,12 @@
     });
     // Payment buttons: PayPal (PayPal.me for one-time, plan links for monthly) and Ko-fi. Missing link = "Coming soon".
     var PP = C.paypal || {}, KF = C.kofi || {};
+    if (PP.disabled) {                         // Ko-fi only: drop the PayPal buttons and make Ko-fi the main one
+      document.querySelectorAll("[data-pp]").forEach(function (a) { a.remove(); });
+      document.querySelectorAll("[data-kofi]").forEach(function (a) { a.classList.add("primary"); a.textContent = "Support on Ko-fi"; });
+      var pl = document.getElementById("payline");
+      if (pl) pl.textContent = "Donations and memberships go through Ko-fi, and you can pay with a card or Google Pay there.";
+    }
     var link = function (a, url) {
       if (url) { a.href = url; a.target = "_blank"; a.rel = "noopener"; return; }
       a.textContent += " · soon"; a.classList.add("soon"); a.setAttribute("aria-disabled", "true");

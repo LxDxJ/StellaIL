@@ -13,6 +13,7 @@ window.STELLA = {
   // Payments. PayPal is the main option, Ko-fi sits next to it. Leave a value empty ("") until it exists:
   // its button then shows "Coming soon".
   paypal: {
+    disabled: true,          // true = hide the PayPal buttons everywhere (Ko-fi only)
     me: "",                  // your PayPal.me name, e.g. "stellabot" (paypal.me/stellabot): one-time amounts use it
     monthly: {               // PayPal subscription links (create three plans in PayPal, paste each link here)
       supporter: "",         // $3 / month
