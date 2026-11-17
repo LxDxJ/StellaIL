@@ -32,15 +32,24 @@
         document.getElementById("onetime").classList.toggle("hidden", m !== "onetime");
       });
     });
-    document.querySelectorAll("[data-pay]").forEach(function (a) {
-      var path = a.getAttribute("data-pay").split(".");
-      var v = C.pay && C.pay[path[0]] && C.pay[path[0]][path[1]];
-      a.href = v || "#";
-      if (v && v !== "#") { a.target = "_blank"; a.rel = "noopener"; }
-      else {                                   // no payment link yet: show a disabled "Coming soon" button
-        a.textContent = "Coming soon"; a.classList.add("soon"); a.setAttribute("aria-disabled", "true");
-        a.addEventListener("click", function (e) { e.preventDefault(); });
-      }
+    // Payment buttons: PayPal (PayPal.me for one-time, plan links for monthly) and Ko-fi. Missing link = "Coming soon".
+    var PP = C.paypal || {}, KF = C.kofi || {};
+    var link = function (a, url) {
+      if (url) { a.href = url; a.target = "_blank"; a.rel = "noopener"; return; }
+      a.textContent += " · soon"; a.classList.add("soon"); a.setAttribute("aria-disabled", "true");
+      a.addEventListener("click", function (e) { e.preventDefault(); });
+    };
+    document.querySelectorAll("[data-pp]").forEach(function (a) {
+      var p = a.getAttribute("data-pp").split("."), url = "";
+      if (p[0] === "monthly") url = PP.monthly && PP.monthly[p[1]];
+      else if (PP.me) url = "https://www.paypal.com/paypalme/" + encodeURIComponent(PP.me) + (/^\d+$/.test(p[1]) ? "/" + p[1] + "USD" : "");
+      link(a, url);
+    });
+    document.querySelectorAll("[data-kofi]").forEach(function (a) {
+      var p = a.getAttribute("data-kofi").split("."), url = "";
+      if (p[0] === "monthly") url = KF.tiers || (KF.page ? KF.page.replace(/\/$/, "") + "/tiers" : "");
+      else url = KF.page || "";
+      link(a, url);
     });
     if (location.hash === "#monthly" || location.hash === "#onetime") {
       var t = document.querySelector('.toggle button[data-mode="' + location.hash.slice(1) + '"]');

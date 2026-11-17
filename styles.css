@@ -185,3 +185,7 @@ section > h2 { margin-bottom: 14px; }
   .board .rolebtns { display: block; margin-top: 6px; }
   .board .rolebtns button { margin: 0 6px 0 0; }
 }
+
+.paybtns { display: flex; gap: 8px; }
+.paybtns .btn { flex: 1; text-align: center; padding-left: 10px; padding-right: 10px; }
+.btn.soon { white-space: nowrap; }
