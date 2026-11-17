@@ -10,19 +10,9 @@ window.STELLA = {
   appBase: "https://stellacardbot.apps.bot-hosting.cloud",   // where Stats and My Stella (logged-in pages) are served
   contactEmail: "",          // e.g. "hello@yourdomain.com" (leave empty to hide)
 
-  // Payments. PayPal is the main option, Ko-fi sits next to it. Leave a value empty ("") until it exists:
-  // its button then shows "Coming soon".
-  paypal: {
-    disabled: true,          // true = hide the PayPal buttons everywhere (Ko-fi only)
-    me: "",                  // your PayPal.me name, e.g. "stellabot" (paypal.me/stellabot): one-time amounts use it
-    monthly: {               // PayPal subscription links (create three plans in PayPal, paste each link here)
-      supporter: "",         // $3 / month
-      star: "",              // $5 / month
-      constellation: ""      // $10 / month
-    }
-  },
-  kofi: {
-    page: "",                // e.g. "https://ko-fi.com/yourname" (one-time donations)
-    tiers: ""                // e.g. "https://ko-fi.com/yourname/tiers" (monthly memberships); empty = page + "/tiers"
+  // Support: Buy Me a Coffee. Leave a value empty ("") until it exists: its button then shows "Coming soon".
+  support: {
+    page: "https://buymeacoffee.com/stellacardbot",   // one-time support, any amount
+    membership: ""                                   // monthly memberships page, once the tiers exist
   }
 };
