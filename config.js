@@ -13,6 +13,6 @@ window.STELLA = {
   // Support: Buy Me a Coffee. Leave a value empty ("") until it exists: its button then shows "Coming soon".
   support: {
     page: "https://buymeacoffee.com/stellacardbot",   // one-time support, any amount
-    membership: ""                                   // monthly memberships page, once the tiers exist
+    membership: "https://buymeacoffee.com/stellacardbot/membership"   // monthly memberships
   }
 };
