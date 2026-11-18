@@ -20,6 +20,14 @@
     else { var box = mail.closest(".card"); if (box) box.classList.add("hidden"); }
   }
 
+  // Support buttons: Buy Me a Coffee. A link that isn't set yet shows "Coming soon".
+  document.querySelectorAll("[data-support]").forEach(function (a) {
+    var v = C.support && C.support[a.getAttribute("data-support")];
+    if (v) { a.href = v; a.target = "_blank"; a.rel = "noopener"; return; }
+    a.textContent = "Coming soon"; a.classList.add("soon"); a.setAttribute("aria-disabled", "true");
+    a.addEventListener("click", function (e) { e.preventDefault(); });
+  });
+
   // Support page: toggle + payment links
   var tabs = document.querySelectorAll(".toggle button");
   if (tabs.length) {
@@ -31,13 +39,6 @@
         document.getElementById("monthly").classList.toggle("hidden", m !== "monthly");
         document.getElementById("onetime").classList.toggle("hidden", m !== "onetime");
       });
-    });
-    // Support buttons: Buy Me a Coffee. A link that isn't set yet shows "Coming soon".
-    document.querySelectorAll("[data-support]").forEach(function (a) {
-      var v = C.support && C.support[a.getAttribute("data-support")];
-      if (v) { a.href = v; a.target = "_blank"; a.rel = "noopener"; return; }
-      a.textContent = "Coming soon"; a.classList.add("soon"); a.setAttribute("aria-disabled", "true");
-      a.addEventListener("click", function (e) { e.preventDefault(); });
     });
     if (location.hash === "#monthly" || location.hash === "#onetime") {
       var t = document.querySelector('.toggle button[data-mode="' + location.hash.slice(1) + '"]');
